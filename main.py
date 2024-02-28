@@ -1,3 +1,5 @@
+from args_parser import parse_args
+
 import os
 import re
 
@@ -28,7 +30,7 @@ def replace_msisdn_in_path(input_string):
 
 def process_files(input_dir, output_dir):
     """
-    Reads all files from the specified input directory line by line,
+    Reads all files from the specified input directory line by line, processes them according to rules,
     and outputs them to files with the same name in the specified output directory.
 
     Args:
@@ -61,8 +63,11 @@ def process_files(input_dir, output_dir):
                 print(f"Error: Unable to decode file")
 
 
-if __name__ == '__main__':
-    input_directory = ''
-    output_directory = ''
+def main():
+    args = parse_args()
 
-    process_files(input_directory, output_directory)
+    process_files(args["input_dir"], args["output_dir"])
+
+
+if __name__ == '__main__':
+    main()
